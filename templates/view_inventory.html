@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}View Inventory{% endblock %}
+
+{% block content %}
+<div class="card animate__animated animate__fadeInUp">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">
+            <i class='bx bx-list-ul'></i> Chemical Inventory
+        </h5>
+        <div class="export-buttons">
+            <a href="{{ url_for('export_excel') }}" class="btn btn-success">
+                <i class='bx bx-file'></i> Export to Excel
+            </a>
+            <a href="{{ url_for('export_pdf') }}" class="btn btn-danger" target="_blank">
+                <i class='bx bx-file-pdf'></i> Export as PDF
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Chemical Name</th>
+                        <th>Unit</th>
+                        <th>Opening Balance</th>
+                        <th>Received Quantity</th>
+                        <th>Consumption Quantity</th>
+                        <th>Closing Balance</th>
+                        <th>Unit of Measurement</th>
+                        <th>Expiry Date</th>
+                        <th>Added On</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chemical in chemicals %}
+                    <tr class="animate__animated animate__fadeIn" style="animation-delay: {{ loop.index * 0.1 }}s">
+                        <td>{{ chemical.id }}</td>
+                        <td>{{ chemical.name }}</td>
+                        <td>{{ chemical.unit }}</td>
+                        <td>{{ chemical.opening_balance }} {{ chemical.measurement_unit }}</td>
+                        <td>{{ chemical.received_quantity }} {{ chemical.measurement_unit }}</td>
+                        <td>{{ chemical.consumption_quantity }} {{ chemical.measurement_unit }}</td>
+                        <td>
+                            {% if chemical.closing_balance < 1000 %}
+                            <span class="text-warning">{{ chemical.closing_balance }} {{ chemical.measurement_unit }}</span>
+                            {% else %}
+                            {{ chemical.closing_balance }} {{ chemical.measurement_unit }}
+                            {% endif %}
+                        </td>
+                        <td>{{ chemical.measurement_unit }}</td>
+                        <td>
+                            {% if chemical.expiry < current_date %}
+                            <span class="text-danger">{{ chemical.expiry }}</span>
+                            {% else %}
+                            {{ chemical.expiry }}
+                            {% endif %}
+                        </td>
+                        <td>{{ chemical.timestamp }}</td>
+                        <td>
+                            {% if chemical.closing_balance < 1000 %}
+                            <span class="badge bg-warning">
+                                <i class='bx bx-error'></i> Low Stock
+                            </span>
+                            {% endif %}
+                            {% if chemical.expiry < current_date %}
+                            <span class="badge bg-danger">
+                                <i class='bx bx-time'></i> Expired
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ chemical.id }}, '{{ chemical.name }}')">
+                                <i class='bx bx-trash'></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span id="chemicalName" class="fw-bold"></span>? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmDelete(id, name) {
+    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    document.getElementById('chemicalName').textContent = name;
+    document.getElementById('deleteForm').action = `/delete/${id}`;
+    modal.show();
+}
+</script>
+{% endblock %}

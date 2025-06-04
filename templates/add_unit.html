@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Unit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="header">
+    <img src="{{ url_for('static', filename='IndianOilLogo.png') }}" class="logo">
+    Add New Unit
+</div>
+<div class="container">
+    <form method="post">
+        <label>New Unit Name:</label>
+        <input type="text" name="unit" required>
+        <button type="submit">Add Unit</button>
+    </form>
+</div>
+</body>
+</html>

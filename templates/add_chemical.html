@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Add Chemical{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card animate__animated animate__fadeInUp">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class='bx bx-plus-circle'></i> Add New Chemical
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="chemical" class="form-label">Chemical Name</label>
+                        <select class="form-select" id="chemical" name="chemical" required>
+                            <option value="">Select Chemical</option>
+                            {% for chemical in chemicals %}
+                            <option value="{{ chemical }}">{{ chemical }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="unit" class="form-label">Unit</label>
+                        <select class="form-select" id="unit" name="unit" required>
+                            <option value="">Select Unit</option>
+                            {% for unit in units %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="opening_balance" class="form-label">Opening Balance</label>
+                        <input type="number" class="form-control" id="opening_balance" name="opening_balance" required min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="received_quantity" class="form-label">Received Quantity</label>
+                        <input type="number" class="form-control" id="received_quantity" name="received_quantity" required min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="consumption_quantity" class="form-label">Consumption Quantity</label>
+                        <input type="number" class="form-control" id="consumption_quantity" name="consumption_quantity" required min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="measurement_unit" class="form-label">Unit of Measurement</label>
+                        <select class="form-select" id="measurement_unit" name="measurement_unit" required>
+                            <option value="">Select Measurement Unit</option>
+                            {% for unit in measurement_units %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expiry" class="form-label">Expiry Date</label>
+                        <input type="date" class="form-control" id="expiry" name="expiry" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class='bx bx-plus'></i> Add Chemical
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
