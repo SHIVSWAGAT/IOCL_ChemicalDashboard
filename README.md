@@ -1,5 +1,10 @@
 # IOCL_ChemicalDashboard
 
+LOGIN CREDENTIALS:
+
+EMPLOYEE ID - ADMIN001
+PASSWORD - admin123
+
 Overview:
 
 The Chemical Inventory Management Dashboard is a comprehensive, web-based application developed to address the challenges of chemical inventory management in large-scale industrial environments such as oil refineries. Traditionally, chemical stock tracking in such settings is performed manually, which can lead to errors, inefficiencies, and compliance risks. This project, created during a summer internship at Indian Oil Corporation Limited (Paradip Refinery), leverages modern web technologies to provide a centralized, secure, and user-friendly solution for managing chemical inventories.The dashboard facilitates the entire lifecycle of chemical inventory data. From the initial entry of stock to tracking daily consumption, received quantities, and monitoring expiry dates, every aspect is handled digitally. The system not only improves accuracy and operational efficiency but also enhances traceability and accountability, which are critical in environments dealing with hazardous materials.
