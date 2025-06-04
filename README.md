@@ -34,30 +34,30 @@ Technologies Used :
 
 This project is built using a modern stack of technologies, each chosen for its suitability to the task:
 
-Python (Flask Framework): Acts as the backend server, handling business logic, routing, user authentication, and API endpoints.
+ 1.Python (Flask Framework): Acts as the backend server, handling business logic, routing, user authentication, and API endpoints.
 
-SQLite: A lightweight, file-based relational database used to store user credentials and all chemical inventory data securely.
+ 2.SQLite: A lightweight, file-based relational database used to store user credentials and all chemical inventory data securely.
 
-HTML, CSS & Bootstrap: Used to create responsive, visually appealing, and easy-to-navigate front-end interfaces.
+ 3.HTML, CSS & Bootstrap: Used to create responsive, visually appealing, and easy-to-navigate front-end interfaces.
 
-JavaScript (with Chart.js): Powers dynamic charts and interactive dashboard elements, providing real-time data visualization.
+ 4.JavaScript (with Chart.js): Powers dynamic charts and interactive dashboard elements, providing real-time data visualization.
 
-Jinja2: Template engine for rendering dynamic HTML pages with server-side data.
+ 5.Jinja2: Template engine for rendering dynamic HTML pages with server-side data.
 
-Pandas & xlsxwriter: Used for exporting inventory data to Excel spreadsheets, supporting advanced data analysis and reporting.
+ 6.Pandas & xlsxwriter: Used for exporting inventory data to Excel spreadsheets, supporting advanced data analysis and reporting.
 
-xhtml2pdf: Converts HTML tables and views into downloadable, print-ready PDF documents for offline use and compliance.
+ 7.xhtml2pdf: Converts HTML tables and views into downloadable, print-ready PDF documents for offline use and compliance.
 
 Key Features :
 
-🔐 Secure Login System
+1.🔐 Secure Login System
 Employee Authentication: Every user must log in using their unique Employee ID and password. This prevents unauthorized access to sensitive chemical data.
 
 Role-Based Access: There are two user roles—Admin and Employee. Admins have full control, including the ability to add or update chemicals, while Employees have restricted access, typically limited to viewing and searching inventory data.
 
 Session Management: The system ensures that only active, authenticated sessions can interact with the application, further enhancing security.
 
-📊 Interactive Dashboard
+2.📊 Interactive Dashboard
 
 Central Hub: After logging in, users are taken to the dashboard, which serves as the main control center for all inventory activities.
 
@@ -67,7 +67,7 @@ Visual Indicators: Color-coded tags and icons highlight low stock levels, expire
 
 Live Updates: All data on the dashboard is updated in real time, ensuring users always see the most current information.
 
-🏭 Unit-wise Inventory Tracking
+3.🏭 Unit-wise Inventory Tracking
 
 Departmental Organization: Each chemical is associated with a specific unit within the refinery (e.g., AVU, FCC, DCU, PRU). This allows for clear separation and management of chemicals by department.
 
@@ -75,7 +75,7 @@ Responsibility Breakdown: Supervisors and staff can focus on the chemicals relev
 
 Easy Filtering: Users can filter inventory data by unit, making it simple to locate and manage chemicals for a particular section of the refinery.
 
-📤 Export to PDF and Excel
+4.📤 Export to PDF and Excel
 
 PDF Export: Users can generate a print-friendly, time-stamped PDF report of the current inventory view. This is useful for compliance, audits, or sharing with management.
 
@@ -83,7 +83,7 @@ Excel Export: Inventory data can be exported to Excel spreadsheets, enabling adv
 
 Traceability: All exported files include the current date and time, ensuring traceability and supporting regulatory requirements.
 
-🛠 Add & Manage Chemicals
+5.🛠 Add & Manage Chemicals
 
 Admin Controls: Admin users can add new chemicals to the system or update the details of existing stocks.
 
@@ -91,7 +91,7 @@ Tracked Fields: Each chemical entry includes the chemical name, associated unit,
 
 Audit Trail: Every transaction or update is logged with a timestamp, ensuring full traceability and accountability for all inventory changes.
 
-🔎 Search & Filter
+6.🔎 Search & Filter
 
 Keyword Search: Users can quickly find chemicals by typing part of the chemical name, unit, or measurement type.
 
@@ -99,7 +99,7 @@ Drop-Down Filters: The interface includes drop-down menus for filtering by unit 
 
 Instant Results: The inventory table updates in real time as users apply search terms or filters, ensuring a smooth and efficient user experience.
 
-🔄 Auto Session Check
+7.🔄 Auto Session Check
 
 Session Validation: The system regularly checks the validity of user sessions. If a session becomes inactive or unauthorized, the user is logged out automatically.
 
